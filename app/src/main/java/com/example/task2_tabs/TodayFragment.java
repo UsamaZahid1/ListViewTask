@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ import java.util.Date;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class TodayFragment extends Fragment {
 
@@ -23,6 +26,7 @@ public class TodayFragment extends Fragment {
 //            R.drawable.coffee, R.drawable.coins, R.drawable.growth, R.drawable.idea, R.drawable.linkedin,
 //            R.drawable.team, R.drawable.startrek, R.drawable.pay};
 //    TextView tvDate, tvToday, tvLifeHacks, tvRunYour;
+    RecyclerView verticalRecyclerView;
 
     @Nullable
     @Override
@@ -30,8 +34,17 @@ public class TodayFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_today, container, false);
+
+
         TextView tv = view.findViewById(R.id.tv_fragtoday_date);
+        verticalRecyclerView=view.findViewById(R.id.verticalRecyclerview);
+
+        verticalRecyclerView.setHasFixedSize(true);
+        verticalRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL,false));
+
+
         tv.setText(getcurrentDateAndTime());
+
 
 
         return view;
