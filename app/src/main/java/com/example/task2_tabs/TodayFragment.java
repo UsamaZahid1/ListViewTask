@@ -30,7 +30,7 @@ public class TodayFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_today, container, false);
-        TextView tv = view.findViewById(R.id.textview);
+        TextView tv = view.findViewById(R.id.tv_fragtoday_date);
         tv.setText(getcurrentDateAndTime());
 
 
@@ -40,7 +40,7 @@ public class TodayFragment extends Fragment {
     public static String getcurrentDateAndTime() {
 
         Date c = Calendar.getInstance().getTime();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("LLL, yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE dd LLLL");
         String formattedDate = simpleDateFormat.format(c);
         return formattedDate;
     }
