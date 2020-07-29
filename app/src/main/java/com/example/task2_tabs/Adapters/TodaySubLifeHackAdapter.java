@@ -14,12 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import static com.example.task2_tabs.R.anim.right;
 
-public class TodaySubItemAdapter extends RecyclerView.Adapter<TodaySubItemAdapter.SubViewHolder> {
+public class TodaySubLifeHackAdapter extends RecyclerView.Adapter<TodaySubLifeHackAdapter.SubViewHolder> {
     int[] img1, img2, img3;
     Context context;
 
 
-    public TodaySubItemAdapter(Context context, int[] img1, int[] img2, int[] img3) {
+    public TodaySubLifeHackAdapter(Context context, int[] img1, int[] img2, int[] img3) {
         this.img1 = img1;
         this.img2 = img2;
         this.img3 = img3;
