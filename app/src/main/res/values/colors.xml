@@ -7,4 +7,6 @@
     <color name="black">#000000</color>
     <color name="grey">#666666</color>
     <color name="img_circle">#C7C6C6</color>
+    <color name="btn_color">#EEECEC</color>
+    <color name="btn_text_color">#3578BE</color>
 </resources>

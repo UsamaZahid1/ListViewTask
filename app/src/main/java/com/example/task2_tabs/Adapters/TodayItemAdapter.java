@@ -50,7 +50,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
 
         holder.rv.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
 
-        TodaySubItemAdapter itemAdapter = new TodaySubItemAdapter(img1, img2, img3);
+        TodaySubItemAdapter itemAdapter = new TodaySubItemAdapter(context,img1, img2, img3);
 
         holder.rv.setAdapter(itemAdapter);
 

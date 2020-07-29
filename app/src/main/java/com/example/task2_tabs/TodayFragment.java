@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,8 +27,8 @@ public class TodayFragment extends Fragment {
 
 
     RecyclerView verticalRecyclerView;
-    String[] data={"LIFE HACK","THE DAILY LIST"};
-    String[] subdata={"Run your business on the go","Get in the loop"};
+    String[] data={"LIFE HACK"};
+    String[] subdata={"Run your business on the go"};
     int[] img1={R.drawable.pay,R.drawable.startrek,R.drawable.team,R.drawable.linkedin,
             R.drawable.idea,R.drawable.growth,R.drawable.pay,R.drawable.startrek,R.drawable.team,R.drawable.linkedin,
             R.drawable.idea,R.drawable.growth};
@@ -51,6 +53,8 @@ public class TodayFragment extends Fragment {
         verticalRecyclerView=view.findViewById(R.id.verticalRecyclerview);
 
         tv.setText(getcurrentDateAndTime());
+
+
 
 
 
