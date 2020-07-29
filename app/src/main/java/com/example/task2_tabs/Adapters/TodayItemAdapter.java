@@ -1,23 +1,33 @@
 package com.example.task2_tabs.Adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.task2_tabs.R;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyViewHolder> {
 
     String[] data;
     String[] subData;
+    int[] img1, img2, img3;
+    Context context;
 
-    public TodayItemAdapter(String[] data, String[] subData) {
+    public TodayItemAdapter(Context context,String[] data, String[] subData, int[] img1, int[] img2, int[] img3) {
+
+        this.context=context;
         this.data = data;
         this.subData = subData;
+        this.img1 = img1;
+        this.img2 = img2;
+        this.img3 = img3;
     }
 
     @NonNull
@@ -32,14 +42,17 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        String title=data[position];
-        String subtitle=subData[position];
+        String title = data[position];
+        String subtitle = subData[position];
 
-         holder.tvmainTitle.setText(title);
-         holder.tvsubtitle.setText(subtitle);
-         holder.rv.
+        holder.tvmainTitle.setText(title);
+        holder.tvsubtitle.setText(subtitle);
 
+        holder.rv.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
 
+        TodaySubItemAdapter itemAdapter = new TodaySubItemAdapter(img1, img2, img3);
+
+        holder.rv.setAdapter(itemAdapter);
 
 
     }
@@ -50,7 +63,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvmainTitle,tvsubtitle;
+        TextView tvmainTitle, tvsubtitle;
         RecyclerView rv;
 
         public MyViewHolder(@NonNull View itemView) {

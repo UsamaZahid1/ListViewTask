@@ -8,13 +8,14 @@ import android.widget.ImageView;
 import com.example.task2_tabs.R;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TodaySubItemAdapter extends RecyclerView.Adapter<TodaySubItemAdapter.SubViewHolder> {
-    int[] img1,img2,img3;
+    int[] img1, img2, img3;
 
 
-    public TodaySubItemAdapter(int[] img1,int[] img2,int[] img3) {
+    public TodaySubItemAdapter(int[] img1, int[] img2, int[] img3) {
         this.img1 = img1;
         this.img2 = img2;
         this.img3 = img3;
@@ -44,6 +45,8 @@ public class TodaySubItemAdapter extends RecyclerView.Adapter<TodaySubItemAdapte
         return img1.length;
     }
 
+
+
     public class SubViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivfirst, ivSecond, ivThird;
@@ -56,4 +59,5 @@ public class TodaySubItemAdapter extends RecyclerView.Adapter<TodaySubItemAdapte
             ivThird = itemView.findViewById(R.id.thirdRow);
         }
     }
+
 }

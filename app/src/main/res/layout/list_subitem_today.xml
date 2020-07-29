@@ -1,25 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/firstRow"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/fb" />
+    <LinearLayout
+        android:id="@+id/firstLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/secondRow"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/fb" />
-    <ImageView
-        android:id="@+id/thirdRow"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/fb" />
-</LinearLayout>
+        <ImageView
+            android:id="@+id/firstRow"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/image"
+            android:padding="5dp"
+            android:src="@drawable/fb" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/secondLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstLayout"
+        android:layout_marginLeft="25dp">
+
+        <ImageView
+            android:id="@+id/secondRow"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/image"
+            android:padding="5dp"
+            android:src="@drawable/fb" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/secondLayout"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/thirdRow"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/image"
+            android:padding="5dp"
+            android:src="@drawable/fb" />
+    </LinearLayout>
+
+
+</RelativeLayout>
