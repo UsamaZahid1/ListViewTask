@@ -19,7 +19,7 @@ public class GamesFragment extends Fragment {
 
     String[] pageMain={"MAJOR UPDATE"};
     String[] pageSub={"Seekers Notes®: Hidden Mystery"};
-    String[] pageSubToSub={"Solve all_new mysteries"};
+    String[] pageSubToSub={"Solve all-new mysteries"};
     String[] relativeMainTitle={"This week's favourities"};
     String[] relativeMainTitleSec={"What We're Playing"};
     String[] relativeSubTitle={"See All"};
