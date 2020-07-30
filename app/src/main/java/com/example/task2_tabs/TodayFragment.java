@@ -48,11 +48,14 @@ public class TodayFragment extends Fragment {
             "Video to GIF & Stop Motion", "Make your own World", "Work professionally", "Grow your company", "Food foodie", "Make money",
             "Build houses", "Paypal", "Files nd Folders", "Coders World", "Success Trophy", "Shoping cart"};
 
-    String[] gameOfThe={"GAME OF THE DAY","GAME OF THE DAY"};
-    String[] gameFirstText={"Kung Fu Clicker: Idle Dojo","Kung Fu Clicker: Idle Dojo"};
-    String[] gameSecondText={"Fight to defend your idle dojo","Fight to defend your idle dojo"};
-    int[] gameMainPic={R.drawable.game,R.drawable.game};
-    int[] gameIcon={R.drawable.icon,R.drawable.icon};
+    String[] gameOfThe={"GAME OF THE DAY","GAME OF THE DAY","GAME OF THE DAY"};
+    String[] gameFirstText={"Kung Fu Clicker: Idle Dojo","Kung Fu Clicker: Idle Dojo","Kung Fu Clicker: Idle Dojo"};
+    String[] gameSecondText={"Fight to defend your idle dojo","Fight to defend your idle dojo","Fight to defend your idle dojo","Fight to defend your idle dojo"};
+    String[] gameBtn={"GET","GET","GET","GET"};
+    int[] gameMainPic={R.drawable.game,R.drawable.game,R.drawable.game};
+    int[] gameIcon={R.drawable.icon,R.drawable.icon,R.drawable.icon};
+
+
 
     @Nullable
     @Override
@@ -72,7 +75,7 @@ public class TodayFragment extends Fragment {
         verticalRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
 
 
-        TodayItemAdapter adapter = new TodayItemAdapter(dataLife, subdataLife, dataMainDaily, dataSubDaily, imgLife1, imglife2, imgLife3, imgDaily1,gameOfThe,gameFirstText,gameSecondText,gameMainPic,gameIcon,view.getContext());
+        TodayItemAdapter adapter = new TodayItemAdapter(dataLife, subdataLife, dataMainDaily, dataSubDaily, imgLife1, imglife2, imgLife3, imgDaily1,gameOfThe,gameFirstText,gameSecondText,gameMainPic,gameIcon,gameBtn,view.getContext());
 
         verticalRecyclerView.setAdapter(adapter);
 

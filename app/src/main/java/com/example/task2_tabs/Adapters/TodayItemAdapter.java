@@ -16,11 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyViewHolder> {
 
-    String[] mainData, subData, mainDataDaily, subDataDaily, gameOfThe, gameFirstText, gameSecondText;
+    String[] mainData, subData, mainDataDaily, subDataDaily, gameOfThe, gameFirstText, gameSecondText,gamebtn;
     int[] imgLife1, imgLife2, imgLife3, imgDaily, gameMainPic, gameIcon;
     Context context;
 
-    public TodayItemAdapter(String[] mainData, String[] subData, String[] dataDaily, String[] subDataDaily, int[] imgLife1, int[] imgLife2, int[] imgLife3, int[] imgDaily, String[] gameOfThe, String[] gameFirstText, String[] gameSecondText, int[] gameMainPic, int[] gameIcon, Context context) {
+    public TodayItemAdapter(String[] mainData, String[] subData, String[] dataDaily, String[] subDataDaily, int[] imgLife1, int[] imgLife2, int[] imgLife3, int[] imgDaily, String[] gameOfThe, String[] gameFirstText, String[] gameSecondText, int[] gameMainPic, int[] gameIcon, String[] gamebtn,Context context) {
         this.mainData = mainData;
         this.subData = subData;
         this.mainDataDaily = dataDaily;
@@ -35,6 +35,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
         this.gameSecondText = gameSecondText;
         this.gameMainPic = gameMainPic;
         this.gameIcon = gameIcon;
+        this.gamebtn = gamebtn;
     }
 
     @NonNull
@@ -54,6 +55,16 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
 
         holder.tvmainTitle.setText(title);
         holder.tvsubtitle.setText(subtitle);
+
+        holder.gameOfTheDay.setText(gameOfThe[position]);
+        holder.gameFirst.setText(gameFirstText[position]);
+        holder.gameSecond.setText(gameSecondText[position]);
+
+        holder.ivMain.setImageResource(gameMainPic[position]);
+        holder.ivIcon.setImageResource(gameIcon[position]);
+        holder.btn.setText(gamebtn[position]);
+
+
 
         //Life hack Layout Manager
         holder.rvLifeHacks.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
