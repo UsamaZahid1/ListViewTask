@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.task2_tabs.R;
@@ -14,11 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyViewHolder> {
 
-    String[] mainData, subData, mainDataDaily, subDataDaily;
-    int[] imgLife1, imgLife2, imgLife3, imgDaily;
+    String[] mainData, subData, mainDataDaily, subDataDaily, gameOfThe, gameFirstText, gameSecondText;
+    int[] imgLife1, imgLife2, imgLife3, imgDaily, gameMainPic, gameIcon;
     Context context;
 
-    public TodayItemAdapter(String[] mainData, String[] subData, String[] dataDaily, String[] subDataDaily, int[] imgLife1, int[] imgLife2, int[] imgLife3, int[] imgDaily, Context context) {
+    public TodayItemAdapter(String[] mainData, String[] subData, String[] dataDaily, String[] subDataDaily, int[] imgLife1, int[] imgLife2, int[] imgLife3, int[] imgDaily, String[] gameOfThe, String[] gameFirstText, String[] gameSecondText, int[] gameMainPic, int[] gameIcon, Context context) {
         this.mainData = mainData;
         this.subData = subData;
         this.mainDataDaily = dataDaily;
@@ -28,6 +30,11 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
         this.imgLife3 = imgLife3;
         this.imgDaily = imgDaily;
         this.context = context;
+        this.gameOfThe = gameOfThe;
+        this.gameFirstText = gameFirstText;
+        this.gameSecondText = gameSecondText;
+        this.gameMainPic = gameMainPic;
+        this.gameIcon = gameIcon;
     }
 
     @NonNull
@@ -49,7 +56,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
         holder.tvsubtitle.setText(subtitle);
 
         //Life hack Layout Manager
-        holder.rvLifeHacks.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
+        holder.rvLifeHacks.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
 
         //Life Hack adapter
@@ -78,8 +85,11 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvmainTitle, tvsubtitle;
+        TextView tvmainTitle, tvsubtitle, gameFirst, gameSecond, gameOfTheDay;
         RecyclerView rvLifeHacks, rvDailyList;
+        ImageView ivMain, ivIcon;
+        Button btn;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +98,12 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
             tvsubtitle = itemView.findViewById(R.id.tv_itemToday_sub);
             rvLifeHacks = itemView.findViewById(R.id.rv_img);
             rvDailyList = itemView.findViewById(R.id.rv_vertical);
+            gameFirst = itemView.findViewById(R.id.tv_firsttext_game);
+            gameSecond = itemView.findViewById(R.id.tvsecondtext_game);
+            gameOfTheDay = itemView.findViewById(R.id.tv_gameoftheday);
+            ivMain = itemView.findViewById(R.id.iv_maingamepic);
+            ivIcon = itemView.findViewById(R.id.iv_icongame);
+            btn = itemView.findViewById(R.id.btn_game);
 
         }
     }

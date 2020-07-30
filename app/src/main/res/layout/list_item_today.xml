@@ -95,20 +95,24 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="350dp"
+        android:id="@+id/game_cardview"
+        android:layout_below="@id/dailyCardView"
         android:layout_margin="20dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
 
         <ImageView
+            android:id="@+id/iv_maingamepic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:src="@drawable/game" />
 
         <TextView
+            android:id="@+id/tv_gameoftheday"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="70dp"
             android:fontFamily="@font/bowlby_one"
             android:text="GAME OF THE DAY"
             android:textColor="@color/white"
@@ -121,6 +125,56 @@
             android:layout_marginTop="270dp"
             android:background="@drawable/gradient">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imgcardview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_icongame"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_firsttext_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/imgcardview"
+                android:text="Kung Fu Clicker: Idle Dojo"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvsecondtext_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_toRightOf="@id/imgcardview"
+                android:text="Fight to defend your idle dojo"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_game"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/button"
+                android:text="GET"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </RelativeLayout>
 
