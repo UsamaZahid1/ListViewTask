@@ -8,19 +8,25 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.task2_tabs.ModelItemGame;
 import com.example.task2_tabs.R;
 
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyViewHolder> {
 
-    String[] mainData, subData, mainDataDaily, subDataDaily, gameOfThe, gameFirstText, gameSecondText,gamebtn;
-    int[] imgLife1, imgLife2, imgLife3, imgDaily, gameMainPic, gameIcon;
+    private ArrayList<ModelItemGame> mExampleList;
+
+    String[] mainData, subData, mainDataDaily, subDataDaily;
+    int[] imgLife1, imgLife2, imgLife3, imgDaily;
     Context context;
 
-    public TodayItemAdapter(String[] mainData, String[] subData, String[] dataDaily, String[] subDataDaily, int[] imgLife1, int[] imgLife2, int[] imgLife3, int[] imgDaily, String[] gameOfThe, String[] gameFirstText, String[] gameSecondText, int[] gameMainPic, int[] gameIcon, String[] gamebtn,Context context) {
+    public TodayItemAdapter(String[] mainData, String[] subData, String[] dataDaily, String[] subDataDaily, int[] imgLife1, int[] imgLife2, int[] imgLife3, int[] imgDaily, ArrayList<ModelItemGame> mExampleList, Context context) {
         this.mainData = mainData;
         this.subData = subData;
         this.mainDataDaily = dataDaily;
@@ -30,12 +36,8 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
         this.imgLife3 = imgLife3;
         this.imgDaily = imgDaily;
         this.context = context;
-        this.gameOfThe = gameOfThe;
-        this.gameFirstText = gameFirstText;
-        this.gameSecondText = gameSecondText;
-        this.gameMainPic = gameMainPic;
-        this.gameIcon = gameIcon;
-        this.gamebtn = gamebtn;
+        this.mExampleList=mExampleList;
+
     }
 
     @NonNull
@@ -49,21 +51,20 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
+        ModelItemGame currentItem = mExampleList.get(position);
         String title = mainData[position];
         String subtitle = subData[position];
 
         holder.tvmainTitle.setText(title);
         holder.tvsubtitle.setText(subtitle);
 
-        holder.gameOfTheDay.setText(gameOfThe[position]);
-        holder.gameFirst.setText(gameFirstText[position]);
-        holder.gameSecond.setText(gameSecondText[position]);
+        holder.gameOfTheDay.setText(currentItem.getGameOfTheDay());
+        holder.gameFirst.setText(currentItem.getGameFirstText());
+        holder.gameSecond.setText(currentItem.getGameSecondText());
 
-        holder.ivMain.setImageResource(gameMainPic[position]);
-        holder.ivIcon.setImageResource(gameIcon[position]);
-        holder.btn.setText(gamebtn[position]);
-
+        holder.ivMain.setImageResource(currentItem.getIvMain());
+        holder.ivIcon.setImageResource(currentItem.getIvIcon());
+        holder.btn.setText(currentItem.getGameBtn());
 
 
         //Life hack Layout Manager
@@ -90,9 +91,10 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
     }
 
 
+
     @Override
     public int getItemCount() {
-        return mainData.length;
+        return mExampleList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -100,11 +102,14 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
         RecyclerView rvLifeHacks, rvDailyList;
         ImageView ivMain, ivIcon;
         Button btn;
+        CardView main, daily;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            main = itemView.findViewById(R.id.mainCardView);
+            daily = itemView.findViewById(R.id.dailyCardView);
             tvmainTitle = itemView.findViewById(R.id.tv_itemToday_main);
             tvsubtitle = itemView.findViewById(R.id.tv_itemToday_sub);
             rvLifeHacks = itemView.findViewById(R.id.rv_img);
@@ -115,6 +120,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter<TodayItemAdapter.MyVi
             ivMain = itemView.findViewById(R.id.iv_maingamepic);
             ivIcon = itemView.findViewById(R.id.iv_icongame);
             btn = itemView.findViewById(R.id.btn_game);
+
 
         }
     }

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+
         android:text="Major Update"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
@@ -62,7 +62,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.7dp"
+        android:layout_height="0.5dp"
         android:layout_marginTop="20dp"
         android:background="#c0c0c0"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,11 +85,11 @@
         android:id="@+id/tv_games_relative_sub_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="32dp"
         android:text="TextView"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -140,18 +140,20 @@
 
         <Button
             android:id="@+id/btn_games_first_game"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
+            android:layout_width="85dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/button"
             android:text="GET"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent" />
     </RelativeLayout>
+
+
     <RelativeLayout
         android:id="@+id/second_relative"
         android:layout_width="match_parent"
@@ -200,12 +202,11 @@
             android:layout_width="125dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/button"
             android:text="GET"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent" />
     </RelativeLayout>
@@ -256,18 +257,27 @@
 
         <Button
             android:id="@+id/btn_games_third_game"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
+            android:layout_width="85dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/button"
             android:text="GET"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent" />
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="316dp"
+        android:background="#c0c0c0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
     <TextView
         android:id="@+id/tv_games_relative_main_sec"
         android:layout_width="wrap_content"
@@ -285,11 +295,11 @@
         android:id="@+id/tv_games_relative_sub_title_sec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="32dp"
         android:text="TextView"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/third_relative" />
 
@@ -340,15 +350,15 @@
 
         <Button
             android:id="@+id/btn_games_first_game_sec"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
+            android:layout_width="85dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/button"
             android:text="GET"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent" />
     </RelativeLayout>
@@ -397,15 +407,15 @@
 
         <Button
             android:id="@+id/btn_games_second_game_sec"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
+            android:layout_width="85dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/button"
             android:text="GET"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent" />
     </RelativeLayout>
@@ -456,15 +466,15 @@
 
         <Button
             android:id="@+id/btn_games_third_game_sec"
-            android:layout_width="80dp"
-            android:layout_height="35dp"
+            android:layout_width="85dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/button"
             android:text="GET"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent" />
     </RelativeLayout>

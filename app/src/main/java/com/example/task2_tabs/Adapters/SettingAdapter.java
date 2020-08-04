@@ -54,9 +54,11 @@ public class SettingAdapter extends BaseAdapter {
             switch (getItemViewType(i)) {
                 case ITEMS:
                     ImageView iv=view.findViewById(R.id.iv_setting);
+                    ImageView ivArrow=view.findViewById(R.id.iv_setting_arrow);
                     TextView tv=view.findViewById(R.id.tv_setting);
 
                     iv.setImageResource(((SettingItems)list.get(i)).getImg());
+                    ivArrow.setImageResource(((SettingItems)list.get(i)).getImgArrow());
                     tv.setText(((SettingItems)list.get(i)).getName());
                     break;
                 case HEADER:

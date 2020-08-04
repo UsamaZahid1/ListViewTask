@@ -37,7 +37,7 @@
                 android:layout_marginBottom="2dp"
                 android:text="Run your business on the go"
                 android:textColor="@color/black"
-                android:textSize="35sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -81,7 +81,7 @@
                 android:layout_marginBottom="2dp"
                 android:text="Get in the loop"
                 android:textColor="@color/black"
-                android:textSize="35sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView

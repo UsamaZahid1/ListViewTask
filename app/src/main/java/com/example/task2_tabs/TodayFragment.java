@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.task2_tabs.Adapters.TodayItemAdapter;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -20,8 +23,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TodayFragment extends Fragment {
 
+    View view;
 
+    private TodayItemAdapter adapter;
+
+    private ArrayList<ModelItemGame> mExampleList;
     RecyclerView verticalRecyclerView;
+    Button btnAdd, btnRefresh;
+    EditText etAdd;
     String[] dataLife = {"LIFE HACK"};
     String[] subdataLife = {"Run your business on the go"};
     int[] imgLife1 = {R.drawable.pay, R.drawable.startrek, R.drawable.team, R.drawable.linkedin,
@@ -40,7 +49,7 @@ public class TodayFragment extends Fragment {
             R.drawable.monitor, R.drawable.graphic, R.drawable.food, R.drawable.money, R.drawable.homerun, R.drawable.paypal,
             R.drawable.filesandfolders, R.drawable.code, R.drawable.cup, R.drawable.shoppingcart};
 
-    String[] dataMainDaily = {"Boomerang from instagram", "Plotagraph", "Loopsie - 3D Photos", "Gif Maker by Momento",
+    String[] dataMainDaily = {"Boomerang\n from instagram", "Plotagraph", "Loopsie - 3D Photos", "Gif Maker by Momento",
             "Make your own World", "Work professionally", "Grow your company", "Food foodie", "Make money",
             "Build houses", "Paypal", "Files nd Folders", "Coders World", "Success Trophy", "Shoping cart"};
 
@@ -48,12 +57,6 @@ public class TodayFragment extends Fragment {
             "Video to GIF & Stop Motion", "Make your own World", "Work professionally", "Grow your company", "Food foodie", "Make money",
             "Build houses", "Paypal", "Files nd Folders", "Coders World", "Success Trophy", "Shoping cart"};
 
-    String[] gameOfThe={"GAME OF THE DAY","GAME OF THE DAY","GAME OF THE DAY"};
-    String[] gameFirstText={"Kung Fu Clicker: Idle Dojo","Kung Fu Clicker: Idle Dojo","Kung Fu Clicker: Idle Dojo"};
-    String[] gameSecondText={"Fight to defend your idle dojo","Fight to defend your idle dojo","Fight to defend your idle dojo","Fight to defend your idle dojo"};
-    String[] gameBtn={"GET","GET","GET","GET"};
-    int[] gameMainPic={R.drawable.game,R.drawable.game,R.drawable.game};
-    int[] gameIcon={R.drawable.icon,R.drawable.icon,R.drawable.icon};
 
 
 
@@ -62,11 +65,14 @@ public class TodayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.fragment_today, container, false);
+        view = inflater.inflate(R.layout.fragment_today, container, false);
 
-
+        createExampleList();
         TextView tv = view.findViewById(R.id.tv_fragtoday_date);
         verticalRecyclerView = view.findViewById(R.id.verticalRecyclerview);
+        btnAdd = view.findViewById(R.id.btn_today_addItem);
+        btnRefresh = view.findViewById(R.id.btn_today_refresh);
+        etAdd = view.findViewById(R.id.et_today_add);
 
         tv.setText(getcurrentDateAndTime());
 
@@ -75,12 +81,36 @@ public class TodayFragment extends Fragment {
         verticalRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
 
 
-        TodayItemAdapter adapter = new TodayItemAdapter(dataLife, subdataLife, dataMainDaily, dataSubDaily, imgLife1, imglife2, imgLife3, imgDaily1,gameOfThe,gameFirstText,gameSecondText,gameMainPic,gameIcon,gameBtn,view.getContext());
+        adapter = new TodayItemAdapter(dataLife, subdataLife, dataMainDaily, dataSubDaily, imgLife1, imglife2, imgLife3, imgDaily1,mExampleList, view.getContext());
+
 
         verticalRecyclerView.setAdapter(adapter);
 
 
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = Integer.parseInt(etAdd.getText().toString());
+                insertItem(position);
+
+            }
+        });
+
+
         return view;
+    }
+
+    public void insertItem(int position) {
+        mExampleList.add(position, new ModelItemGame("Game Of The Day","Kung fu Clicker","Fight to defend","GET",R.drawable.game,R.drawable.icon));
+        adapter.notifyItemInserted(position);
+    }
+
+
+    public void createExampleList() {
+        mExampleList = new ArrayList<>();
+        mExampleList.add(new ModelItemGame("Game Of The Day","Kung fu Clicker","Fight to defend","GET",R.drawable.game,R.drawable.icon));
+
+
     }
 
     public static String getcurrentDateAndTime() {
