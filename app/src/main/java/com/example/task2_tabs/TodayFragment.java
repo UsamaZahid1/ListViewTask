@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.task2_tabs.Adapters.TodayItemAdapter;
+import com.example.task2_tabs.Adapters.TodayItemAdapterFirst;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,14 +25,14 @@ public class TodayFragment extends Fragment {
 
     View view;
 
-    private TodayItemAdapter adapter;
+    private TodayItemAdapterFirst adapter;
 
-    private ArrayList<ModelItemGame> mExampleList;
+    private ArrayList<ModelItemGame> GameList;
+    private ArrayList<ModelItemLife> LifeList;
     RecyclerView verticalRecyclerView;
     Button btnAdd, btnRefresh;
     EditText etAdd;
-    String[] dataLife = {"LIFE HACK"};
-    String[] subdataLife = {"Run your business on the go"};
+
     int[] imgLife1 = {R.drawable.pay, R.drawable.startrek, R.drawable.team, R.drawable.linkedin,
             R.drawable.idea, R.drawable.growth, R.drawable.pay, R.drawable.startrek, R.drawable.team, R.drawable.linkedin,
             R.drawable.idea, R.drawable.growth};
@@ -81,35 +81,36 @@ public class TodayFragment extends Fragment {
         verticalRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
 
 
-        adapter = new TodayItemAdapter(dataLife, subdataLife, dataMainDaily, dataSubDaily, imgLife1, imglife2, imgLife3, imgDaily1,mExampleList, view.getContext());
+        adapter = new TodayItemAdapterFirst( imgLife1, imglife2, imgLife3, imgDaily1,LifeList, view.getContext());
 
 
         verticalRecyclerView.setAdapter(adapter);
 
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = Integer.parseInt(etAdd.getText().toString());
-                insertItem(position);
-
-            }
-        });
+//
+//        btnAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int position = Integer.parseInt(etAdd.getText().toString());
+//                insertItem(position);
+//
+//            }
+//        });
 
 
         return view;
     }
 
-    public void insertItem(int position) {
-        mExampleList.add(position, new ModelItemGame("Game Of The Day","Kung fu Clicker","Fight to defend","GET",R.drawable.game,R.drawable.icon));
-        adapter.notifyItemInserted(position);
-    }
+//    public void insertItem(int position) {
+//        GameList.add(position, new ModelItemGame("Game Of The Day","Kung fu Clicker","Fight to defend","GET",R.drawable.game,R.drawable.icon));
+//        adapter.notifyItemInserted(position);
+//    }
 
 
     public void createExampleList() {
-        mExampleList = new ArrayList<>();
-        mExampleList.add(new ModelItemGame("Game Of The Day","Kung fu Clicker","Fight to defend","GET",R.drawable.game,R.drawable.icon));
-
+//        GameList = new ArrayList<>();
+        LifeList = new ArrayList<>();
+//        GameList.add(new ModelItemGame("Game Of The Day","Kung fu Clicker","Fight to defend","GET",R.drawable.game,R.drawable.icon));
+       LifeList.add(new ModelItemLife("Life Hack","Run Your Business on the go"));
 
     }
 
