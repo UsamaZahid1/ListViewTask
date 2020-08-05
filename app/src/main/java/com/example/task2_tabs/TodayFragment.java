@@ -8,12 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.task2_tabs.Adapters.TodayItemAdapterFirst;
+import com.example.task2_tabs.Adapters.TodayItemAdapter;
+import com.example.task2_tabs.Model.ModelItemDaily;
+import com.example.task2_tabs.Model.ModelItemGame;
+import com.example.task2_tabs.Model.ModelItemLife;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,13 +29,12 @@ public class TodayFragment extends Fragment {
 
     View view;
 
-    private TodayItemAdapterFirst adapter;
+
+   List list=new ArrayList();
+
 
     private ArrayList<ModelItemGame> GameList;
-    private ArrayList<ModelItemLife> LifeList;
     RecyclerView verticalRecyclerView;
-    Button btnAdd, btnRefresh;
-    EditText etAdd;
 
     int[] imgLife1 = {R.drawable.pay, R.drawable.startrek, R.drawable.team, R.drawable.linkedin,
             R.drawable.idea, R.drawable.growth, R.drawable.pay, R.drawable.startrek, R.drawable.team, R.drawable.linkedin,
@@ -58,8 +61,6 @@ public class TodayFragment extends Fragment {
             "Build houses", "Paypal", "Files nd Folders", "Coders World", "Success Trophy", "Shoping cart"};
 
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -67,52 +68,51 @@ public class TodayFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_today, container, false);
 
-        createExampleList();
+
         TextView tv = view.findViewById(R.id.tv_fragtoday_date);
         verticalRecyclerView = view.findViewById(R.id.verticalRecyclerview);
-        btnAdd = view.findViewById(R.id.btn_today_addItem);
-        btnRefresh = view.findViewById(R.id.btn_today_refresh);
-        etAdd = view.findViewById(R.id.et_today_add);
+
 
         tv.setText(getcurrentDateAndTime());
 
 
+
+
         verticalRecyclerView.setHasFixedSize(true);
-        verticalRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
+        verticalRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
 
-        adapter = new TodayItemAdapterFirst( imgLife1, imglife2, imgLife3, imgDaily1,LifeList, view.getContext());
 
+
+        list.add(new ModelItemLife("Life Hack", "Run Your Business on the go"));
+        list.add(new ModelItemDaily("The Daily List", "Get In The Loop"));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
+
+
+
+        TodayItemAdapter adapter = new TodayItemAdapter(imgLife1, imglife2, imgLife3, list, imgDaily1, dataMainDaily, dataSubDaily, view.getContext());
 
         verticalRecyclerView.setAdapter(adapter);
-
-//
-//        btnAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                int position = Integer.parseInt(etAdd.getText().toString());
-//                insertItem(position);
-//
-//            }
-//        });
 
 
         return view;
     }
 
-//    public void insertItem(int position) {
-//        GameList.add(position, new ModelItemGame("Game Of The Day","Kung fu Clicker","Fight to defend","GET",R.drawable.game,R.drawable.icon));
-//        adapter.notifyItemInserted(position);
-//    }
-
-
-    public void createExampleList() {
-//        GameList = new ArrayList<>();
-        LifeList = new ArrayList<>();
-//        GameList.add(new ModelItemGame("Game Of The Day","Kung fu Clicker","Fight to defend","GET",R.drawable.game,R.drawable.icon));
-       LifeList.add(new ModelItemLife("Life Hack","Run Your Business on the go"));
-
-    }
 
     public static String getcurrentDateAndTime() {
 

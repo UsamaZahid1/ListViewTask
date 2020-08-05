@@ -1,4 +1,4 @@
-package com.example.task2_tabs;
+package com.example.task2_tabs.Model;
 
 public class ModelItemLife {
     String Life, Run;

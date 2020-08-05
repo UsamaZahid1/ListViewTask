@@ -1,11 +1,11 @@
-package com.example.task2_tabs;
+package com.example.task2_tabs.Model;
 
 public class ModelItemGame {
     String gameOfTheDay,gameFirstText,gameSecondText,gameBtn;
     int ivMain;
     int ivIcon;
 
-    public ModelItemGame(String gameOfTheDay, String gameFirstText, String gameSecondText, String gameBtn, int ivMain, int ivIcon) {
+    public ModelItemGame(String gameOfTheDay, String gameFirstText, String gameSecondText,int ivMain, int ivIcon) {
         this.gameOfTheDay = gameOfTheDay;
         this.gameFirstText = gameFirstText;
         this.gameSecondText = gameSecondText;
