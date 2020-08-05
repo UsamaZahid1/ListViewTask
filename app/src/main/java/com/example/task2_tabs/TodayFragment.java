@@ -27,8 +27,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TodayFragment extends Fragment {
 
-    TodayItemAdapter adapter;
-
     List list = new ArrayList();
 
     Button btnAdd;
@@ -125,7 +123,7 @@ public class TodayFragment extends Fragment {
 
         for (int i = 3; i < 100; i++) {
 
-
+            list.add(i,new ModelItemDaily("The Daily List", "Get In The Loop"));
         }
     }
 

@@ -9,7 +9,6 @@ public class ModelItemGame {
         this.gameOfTheDay = gameOfTheDay;
         this.gameFirstText = gameFirstText;
         this.gameSecondText = gameSecondText;
-        this.gameBtn = gameBtn;
         this.ivMain = ivMain;
         this.ivIcon = ivIcon;
     }

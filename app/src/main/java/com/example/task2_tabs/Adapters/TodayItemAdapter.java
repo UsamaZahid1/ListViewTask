@@ -90,44 +90,39 @@ public class TodayItemAdapter extends RecyclerView.Adapter {
 
 
             firstViewHolder.rvLifeHacks.setAdapter(itemAdapter);
-        //}
+            //}
 
-    } else if(this.
+        } else if (this.getItemViewType(position) == 1) {
 
-    getItemViewType(position) ==1)
-
-    {
-        ModelItemDaily dailycurrentItem = (ModelItemDaily) list.get(position);
-        SecondViewHolder secondViewHolder = (SecondViewHolder) holder;
+            ModelItemDaily dailycurrentItem = (ModelItemDaily) list.get(position);
+            SecondViewHolder secondViewHolder = (SecondViewHolder) holder;
 
 
-        secondViewHolder.tvmainTitleDaily.setText(dailycurrentItem.getDaiy());
-        secondViewHolder.tvsubTitleDaily.setText(dailycurrentItem.getGetIn());
+            secondViewHolder.tvmainTitleDaily.setText(dailycurrentItem.getDaiy());
+            secondViewHolder.tvsubTitleDaily.setText(dailycurrentItem.getGetIn());
 
 
-        //  Daily List Layout Manager
-        secondViewHolder.rvDailyList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+            //  Daily List Layout Manager
+            secondViewHolder.rvDailyList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
 
-        //Daily List adapter
-        TodaySubDailyListAdapter adapter = new TodaySubDailyListAdapter(imgDaily, mainDataDaily, subDataDaily, context);
+            //Daily List adapter
+            TodaySubDailyListAdapter adapter = new TodaySubDailyListAdapter(imgDaily, mainDataDaily, subDataDaily, context);
 
-        secondViewHolder.rvDailyList.setAdapter(adapter);
+            secondViewHolder.rvDailyList.setAdapter(adapter);
 
-    } else
+        } else {
+            ModelItemGame gameCurrentItem = (ModelItemGame) list.get(position);
+            ThirdViewHolder thirdViewHolder = (ThirdViewHolder) holder;
 
-    {
-        ModelItemGame gameCurrentItem = (ModelItemGame) list.get(position);
-        ThirdViewHolder thirdViewHolder = (ThirdViewHolder) holder;
+            thirdViewHolder.gameOfThe.setText(gameCurrentItem.getGameOfTheDay());
+            thirdViewHolder.gameFirst.setText(gameCurrentItem.getGameFirstText());
+            thirdViewHolder.gameSecond.setText(gameCurrentItem.getGameSecondText());
+            thirdViewHolder.main.setImageResource(gameCurrentItem.getIvMain());
+            thirdViewHolder.icon.setImageResource(gameCurrentItem.getIvIcon());
 
-        thirdViewHolder.gameOfThe.setText(gameCurrentItem.getGameOfTheDay());
-        thirdViewHolder.gameFirst.setText(gameCurrentItem.getGameFirstText());
-        thirdViewHolder.gameSecond.setText(gameCurrentItem.getGameSecondText());
-        thirdViewHolder.main.setImageResource(gameCurrentItem.getIvMain());
-        thirdViewHolder.icon.setImageResource(gameCurrentItem.getIvIcon());
-
+        }
     }
-}
 
 
     @Override
@@ -145,49 +140,49 @@ public class TodayItemAdapter extends RecyclerView.Adapter {
         return list.size();
     }
 
-static class FirstViewHolder extends RecyclerView.ViewHolder {
-    private TextView tvmainTitleLife, tvsubtitleLife;
-    private RecyclerView rvLifeHacks;
+    static class FirstViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvmainTitleLife, tvsubtitleLife;
+        private RecyclerView rvLifeHacks;
 
 
-    public FirstViewHolder(@NonNull View itemView) {
-        super(itemView);
+        public FirstViewHolder(@NonNull View itemView) {
+            super(itemView);
 
 
-        tvmainTitleLife = itemView.findViewById(R.id.tv_itemToday_first_main);
-        tvsubtitleLife = itemView.findViewById(R.id.tv_itemToday_first_sub);
-        rvLifeHacks = itemView.findViewById(R.id.rv_img);
+            tvmainTitleLife = itemView.findViewById(R.id.tv_itemToday_first_main);
+            tvsubtitleLife = itemView.findViewById(R.id.tv_itemToday_first_sub);
+            rvLifeHacks = itemView.findViewById(R.id.rv_img);
 
 
-    }
-}
-
-static class SecondViewHolder extends RecyclerView.ViewHolder {
-    private TextView tvmainTitleDaily, tvsubTitleDaily;
-    private RecyclerView rvDailyList;
-
-    public SecondViewHolder(@NonNull View itemView) {
-        super(itemView);
-        tvmainTitleDaily = itemView.findViewById(R.id.tv_itemToday_second_main);
-        tvsubTitleDaily = itemView.findViewById(R.id.tv_itemToday_second_sub);
-        rvDailyList = itemView.findViewById(R.id.rv_itemToday_second);
+        }
     }
 
-}
+    static class SecondViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvmainTitleDaily, tvsubTitleDaily;
+        private RecyclerView rvDailyList;
 
-static class ThirdViewHolder extends RecyclerView.ViewHolder {
-    ImageView main, icon;
-    TextView gameOfThe, gameFirst, gameSecond;
+        public SecondViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvmainTitleDaily = itemView.findViewById(R.id.tv_itemToday_second_main);
+            tvsubTitleDaily = itemView.findViewById(R.id.tv_itemToday_second_sub);
+            rvDailyList = itemView.findViewById(R.id.rv_itemToday_second);
+        }
 
-
-    public ThirdViewHolder(@NonNull View itemView) {
-        super(itemView);
-        main = itemView.findViewById(R.id.iv_maingamepic);
-        icon = itemView.findViewById(R.id.iv_icongame);
-        gameOfThe = itemView.findViewById(R.id.tv_gameoftheday);
-        gameFirst = itemView.findViewById(R.id.tv_firsttext_game);
-        gameSecond = itemView.findViewById(R.id.tvsecondtext_game);
     }
-}
+
+    static class ThirdViewHolder extends RecyclerView.ViewHolder {
+        ImageView main, icon;
+        TextView gameOfThe, gameFirst, gameSecond;
+
+
+        public ThirdViewHolder(@NonNull View itemView) {
+            super(itemView);
+            main = itemView.findViewById(R.id.iv_maingamepic);
+            icon = itemView.findViewById(R.id.iv_icongame);
+            gameOfThe = itemView.findViewById(R.id.tv_gameoftheday);
+            gameFirst = itemView.findViewById(R.id.tv_firsttext_game);
+            gameSecond = itemView.findViewById(R.id.tvsecondtext_game);
+        }
+    }
 
 }
