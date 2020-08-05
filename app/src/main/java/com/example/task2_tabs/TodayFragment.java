@@ -27,13 +27,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TodayFragment extends Fragment {
 
-    View view;
+    TodayItemAdapter adapter;
 
+    List list = new ArrayList();
 
-   List list=new ArrayList();
-
-
-    private ArrayList<ModelItemGame> GameList;
+    Button btnAdd;
+    EditText etPosition, etItem;
     RecyclerView verticalRecyclerView;
 
     int[] imgLife1 = {R.drawable.pay, R.drawable.startrek, R.drawable.team, R.drawable.linkedin,
@@ -66,54 +65,72 @@ public class TodayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        view = inflater.inflate(R.layout.fragment_today, container, false);
+        View view = inflater.inflate(R.layout.fragment_today, container, false);
 
 
         TextView tv = view.findViewById(R.id.tv_fragtoday_date);
         verticalRecyclerView = view.findViewById(R.id.verticalRecyclerview);
 
+        btnAdd = view.findViewById(R.id.btn_today_addItem);
+        etPosition = view.findViewById(R.id.et_today_position);
+        etItem = view.findViewById(R.id.et_today_item);
+
 
         tv.setText(getcurrentDateAndTime());
-
-
 
 
         verticalRecyclerView.setHasFixedSize(true);
         verticalRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-
-
-
-        list.add(new ModelItemLife("Life Hack", "Run Your Business on the go"));
-        list.add(new ModelItemDaily("The Daily List", "Get In The Loop"));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo","Fight To Defend Your Idle Dojo",R.drawable.game,R.drawable.icon));
-
+        createList();
 
 
         TodayItemAdapter adapter = new TodayItemAdapter(imgLife1, imglife2, imgLife3, list, imgDaily1, dataMainDaily, dataSubDaily, view.getContext());
 
         verticalRecyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = Integer.parseInt(etPosition.getText().toString());
+                insert(position);
+            }
+        });
 
 
         return view;
     }
 
 
+    public void insert(int position) {
+        int item = Integer.parseInt(etItem.getText().toString());
+        if (item == 1) {
+            list.add(position, new ModelItemLife("Life Hack", "Run Your Business on the go"));
+        } else if (item == 2) {
+            list.add(position, new ModelItemDaily("The Daily List", "Get In The Loop"));
+
+        } else {
+            list.add(position, new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo", "Fight To Defend Your Idle Dojo", R.drawable.game, R.drawable.icon));
+        }
+
+    }
+
+
+    public void createList() {
+        list.add(new ModelItemLife("Life Hack", "Run Your Business on the go"));
+        list.add(new ModelItemDaily("The Daily List", "Get In The Loop"));
+        list.add(new ModelItemGame("Game Of The Day", "Kung Fu Clicker: Idle Dojo", "Fight To Defend Your Idle Dojo", R.drawable.game, R.drawable.icon));
+
+        for (int i = 3; i < 100; i++) {
+
+
+        }
+    }
+
+
+    //Time & date method
     public static String getcurrentDateAndTime() {
 
         Date c = Calendar.getInstance().getTime();

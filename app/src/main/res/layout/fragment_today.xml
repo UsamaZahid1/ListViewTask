@@ -48,33 +48,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
-
+        android:layout_marginBottom="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_today_addItem"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Add"-->
-<!--        android:layout_marginLeft="60dp"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/verticalRecyclerview" />-->
+    <Button
+        android:id="@+id/btn_today_addItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:text="Add"
+        app:layout_constraintTop_toBottomOf="@+id/verticalRecyclerview" />
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_today_refresh"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Refresh Data"-->
-
-<!--        app:layout_constraintTop_toBottomOf="@+id/btn_today_addItem" />-->
-<!--    <EditText-->
-<!--        android:id="@+id/et_today_add"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintRight_toLeftOf="@id/btn_today_addItem"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/verticalRecyclerview"-->
-<!--        />-->
-
+    <EditText
+        android:id="@+id/et_today_position"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Position"
+        app:layout_constraintRight_toLeftOf="@id/btn_today_addItem"
+        app:layout_constraintTop_toBottomOf="@+id/verticalRecyclerview" />
+    <EditText
+        android:id="@+id/et_today_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Which Item"
+        android:gravity="center"
+        app:layout_constraintRight_toLeftOf="@id/btn_today_addItem"
+        app:layout_constraintTop_toBottomOf="@+id/btn_today_addItem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

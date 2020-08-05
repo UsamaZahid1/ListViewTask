@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,7 +52,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter {
             FirstViewHolder holder = new FirstViewHolder(view);
             return holder;
 
-        } else if(this.getItemViewType(viewType)==1){
+        } else if (this.getItemViewType(viewType) == 1) {
 
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.list_item_today_second, parent, false);
@@ -61,7 +60,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter {
             SecondViewHolder secondViewHolder = new SecondViewHolder(view);
             return secondViewHolder;
 
-        }else{
+        } else {
 
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.list_item_today_third, parent, false);
@@ -73,7 +72,7 @@ public class TodayItemAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (this.getItemViewType(position) == 0) {
-
+            //  for (ModelItemLife life: list.get(position).getObjects()) {
             FirstViewHolder firstViewHolder = (FirstViewHolder) holder;
 
             ModelItemLife LifecurrentItem = (ModelItemLife) list.get(position);
@@ -91,37 +90,44 @@ public class TodayItemAdapter extends RecyclerView.Adapter {
 
 
             firstViewHolder.rvLifeHacks.setAdapter(itemAdapter);
+        //}
 
-        } else if (this.getItemViewType(position) == 1) {
-            ModelItemDaily dailycurrentItem = (ModelItemDaily) list.get(position);
-            SecondViewHolder secondViewHolder = (SecondViewHolder) holder;
+    } else if(this.
 
+    getItemViewType(position) ==1)
 
-            secondViewHolder.tvmainTitleDaily.setText(dailycurrentItem.getDaiy());
-            secondViewHolder.tvsubTitleDaily.setText(dailycurrentItem.getGetIn());
-
-
-            //  Daily List Layout Manager
-            secondViewHolder.rvDailyList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+    {
+        ModelItemDaily dailycurrentItem = (ModelItemDaily) list.get(position);
+        SecondViewHolder secondViewHolder = (SecondViewHolder) holder;
 
 
-            //Daily List adapter
-            TodaySubDailyListAdapter adapter = new TodaySubDailyListAdapter(imgDaily, mainDataDaily, subDataDaily, context);
+        secondViewHolder.tvmainTitleDaily.setText(dailycurrentItem.getDaiy());
+        secondViewHolder.tvsubTitleDaily.setText(dailycurrentItem.getGetIn());
 
-            secondViewHolder.rvDailyList.setAdapter(adapter);
 
-        } else {
-            ModelItemGame gameCurrentItem = (ModelItemGame) list.get(position);
-            ThirdViewHolder thirdViewHolder= (ThirdViewHolder) holder;
+        //  Daily List Layout Manager
+        secondViewHolder.rvDailyList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
 
-            thirdViewHolder.gameOfThe.setText(gameCurrentItem.getGameOfTheDay());
-            thirdViewHolder.gameFirst.setText(gameCurrentItem.getGameFirstText());
-            thirdViewHolder.gameSecond.setText(gameCurrentItem.getGameSecondText());
-            thirdViewHolder.main.setImageResource(gameCurrentItem.getIvMain());
-            thirdViewHolder.icon.setImageResource(gameCurrentItem.getIvIcon());
 
-        }
+        //Daily List adapter
+        TodaySubDailyListAdapter adapter = new TodaySubDailyListAdapter(imgDaily, mainDataDaily, subDataDaily, context);
+
+        secondViewHolder.rvDailyList.setAdapter(adapter);
+
+    } else
+
+    {
+        ModelItemGame gameCurrentItem = (ModelItemGame) list.get(position);
+        ThirdViewHolder thirdViewHolder = (ThirdViewHolder) holder;
+
+        thirdViewHolder.gameOfThe.setText(gameCurrentItem.getGameOfTheDay());
+        thirdViewHolder.gameFirst.setText(gameCurrentItem.getGameFirstText());
+        thirdViewHolder.gameSecond.setText(gameCurrentItem.getGameSecondText());
+        thirdViewHolder.main.setImageResource(gameCurrentItem.getIvMain());
+        thirdViewHolder.icon.setImageResource(gameCurrentItem.getIvIcon());
+
     }
+}
 
 
     @Override
@@ -139,49 +145,49 @@ public class TodayItemAdapter extends RecyclerView.Adapter {
         return list.size();
     }
 
-    static class FirstViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvmainTitleLife, tvsubtitleLife, gameFirst, gameSecond, gameOfTheDay;
-        private RecyclerView rvLifeHacks;
+static class FirstViewHolder extends RecyclerView.ViewHolder {
+    private TextView tvmainTitleLife, tvsubtitleLife;
+    private RecyclerView rvLifeHacks;
 
 
-        public FirstViewHolder(@NonNull View itemView) {
-            super(itemView);
+    public FirstViewHolder(@NonNull View itemView) {
+        super(itemView);
 
 
-            tvmainTitleLife = itemView.findViewById(R.id.tv_itemToday_first_main);
-            tvsubtitleLife = itemView.findViewById(R.id.tv_itemToday_first_sub);
-            rvLifeHacks = itemView.findViewById(R.id.rv_img);
+        tvmainTitleLife = itemView.findViewById(R.id.tv_itemToday_first_main);
+        tvsubtitleLife = itemView.findViewById(R.id.tv_itemToday_first_sub);
+        rvLifeHacks = itemView.findViewById(R.id.rv_img);
 
-
-        }
-    }
-
-    static class SecondViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvmainTitleDaily, tvsubTitleDaily;
-        private RecyclerView rvDailyList;
-
-        public SecondViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvmainTitleDaily = itemView.findViewById(R.id.tv_itemToday_second_main);
-            tvsubTitleDaily = itemView.findViewById(R.id.tv_itemToday_second_sub);
-            rvDailyList = itemView.findViewById(R.id.rv_itemToday_second);
-        }
 
     }
+}
 
-    static class ThirdViewHolder extends RecyclerView.ViewHolder {
-        ImageView main, icon;
-        TextView gameOfThe,gameFirst,gameSecond;
+static class SecondViewHolder extends RecyclerView.ViewHolder {
+    private TextView tvmainTitleDaily, tvsubTitleDaily;
+    private RecyclerView rvDailyList;
 
-
-        public ThirdViewHolder(@NonNull View itemView) {
-            super(itemView);
-            main=itemView.findViewById(R.id.iv_maingamepic);
-            icon=itemView.findViewById(R.id.iv_icongame);
-            gameOfThe=itemView.findViewById(R.id.tv_gameoftheday);
-            gameFirst=itemView.findViewById(R.id.tv_firsttext_game);
-            gameSecond=itemView.findViewById(R.id.tvsecondtext_game);
-        }
+    public SecondViewHolder(@NonNull View itemView) {
+        super(itemView);
+        tvmainTitleDaily = itemView.findViewById(R.id.tv_itemToday_second_main);
+        tvsubTitleDaily = itemView.findViewById(R.id.tv_itemToday_second_sub);
+        rvDailyList = itemView.findViewById(R.id.rv_itemToday_second);
     }
+
+}
+
+static class ThirdViewHolder extends RecyclerView.ViewHolder {
+    ImageView main, icon;
+    TextView gameOfThe, gameFirst, gameSecond;
+
+
+    public ThirdViewHolder(@NonNull View itemView) {
+        super(itemView);
+        main = itemView.findViewById(R.id.iv_maingamepic);
+        icon = itemView.findViewById(R.id.iv_icongame);
+        gameOfThe = itemView.findViewById(R.id.tv_gameoftheday);
+        gameFirst = itemView.findViewById(R.id.tv_firsttext_game);
+        gameSecond = itemView.findViewById(R.id.tvsecondtext_game);
+    }
+}
 
 }

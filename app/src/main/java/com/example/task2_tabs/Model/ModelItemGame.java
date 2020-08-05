@@ -26,9 +26,6 @@ public class ModelItemGame {
         return gameSecondText;
     }
 
-    public String getGameBtn() {
-        return gameBtn;
-    }
 
     public int getIvMain() {
         return ivMain;
